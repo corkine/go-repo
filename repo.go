@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 )
 
 var port = flag.Int("port", 9001, "Http port")
@@ -28,6 +29,9 @@ func main() {
 	http.HandleFunc("/usage", help)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		uri := r.RequestURI
+		uri = strings.ReplaceAll(uri, "?go-get=0", "")
+		uri = strings.ReplaceAll(uri, "?go-get=1", "")
+		uri = strings.ReplaceAll(uri, ".git", "")
 		host := "https://repo.mazhangjing.com"
 		goImport := fmt.Sprintf(
 			`<meta content="%s%s git https://gitee.com/corkine%s.git" name="go-import">`,
