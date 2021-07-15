@@ -28,7 +28,7 @@ func main() {
 	http.HandleFunc("/usage", help)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		uri := r.RequestURI
-		host := r.Host
+		host := "http://repo.mazhangjing.com"
 		goImport := fmt.Sprintf(
 			`<meta content="%s%s git https://gitee.com/corkine%s.git" name="go-import">`,
 			host, uri, uri)
