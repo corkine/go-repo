@@ -32,10 +32,10 @@ func main() {
 		uri = strings.ReplaceAll(uri, "?go-get=0", "")
 		uri = strings.ReplaceAll(uri, "?go-get=1", "")
 		uri = strings.ReplaceAll(uri, ".git", "")
-		host := "https://repo.mazhangjing.com"
+		repoHost := "repo.mazhangjing.com"
 		goImport := fmt.Sprintf(
 			`<meta content="%s%s git https://gitee.com/corkine%s.git" name="go-import">`,
-			host, uri, uri)
+			repoHost, uri, uri)
 		newURL := fmt.Sprintf("https://gitee.com/corkine%s.git", uri)
 		htmlBody := fmt.Sprintf(`<!DOCTYPE html>
 			<html lang='zh-CN'>
