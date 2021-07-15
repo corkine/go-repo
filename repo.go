@@ -11,12 +11,24 @@ import (
 
 var port = flag.Int("port", 9001, "Http port")
 
+const LOG = `0.0.1 2021.07.15 实现了基本的 go repo 逻辑(TODO:使用数据库增加自定义指向，比如 gitee 和 github)`
+
+var VERSION = func() string {
+	split := strings.Split(LOG, "\n")
+	lastLine := split[len(split)-1]
+	if lastLine == "" && len(split) > 1 {
+		lastLine = split[len(split)-2]
+	}
+	lineSplit := strings.Split(lastLine, " ")
+	return lineSplit[0]
+}()
+
 func main() {
 	flag.Parse()
 	help := func(w http.ResponseWriter, r *http.Request) {
 		data := map[string]string{
-			"version": "",
-			"log":     "",
+			"version": VERSION,
+			"log":     LOG,
 			"usage":   "import repo.mazhangjing.com/xxx to use https://gitee.com/corkine/xxx go mod repo",
 		}
 		bytes, err := json.Marshal(data)
