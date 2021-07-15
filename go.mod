@@ -1,1 +1,3 @@
-module "repo"
+module repo
+
+go 1.13
