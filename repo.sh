@@ -1,4 +1,4 @@
-export GOROOT=/usr/local/go
+#export GOROOT=/usr/local/go
 export GO111MODULE=on
 
 cd /go-repo
