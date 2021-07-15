@@ -49,5 +49,6 @@ func main() {
 			log.Println(err)
 		}
 	})
+	log.Printf("Server run on port %d", *port)
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%d", *port), nil))
 }
